@@ -2,11 +2,21 @@
 <html lang="en-US">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
-
-    <div ng-app="">
-      <p>Name : <input type="text" ng-model="name"></p>
-      <h1>Hello {{name}}</h1>
+    <p>TODO: look at events and updating the score.</p>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      Roll 1: <input type="text" ng-model="roll1"><br>
+      Roll 2: <input type="text" ng-model="roll2"><br>
+      <br>
+      Score: {{ score }}
     </div>
 
+    <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope) {
+          $scope.roll1 = 1;
+          $scope.roll2 = 3;
+          $scope.score = $scope.roll1 + $scope.roll2;
+      });
+    </script>
   </body>
 </html>
