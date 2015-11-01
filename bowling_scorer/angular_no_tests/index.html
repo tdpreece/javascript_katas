@@ -2,14 +2,28 @@
 <html lang="en-US">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
+    <!--
+    * ng-app
+    Auto-bootstrap for AngularJS application. It defines the root
+    element.
+    Only one application can be bootstrapped per html document.
+    You have to manually bootstrap if you have multiple
+    applications in a document.
+
+    * ng-controller
+    Initialises scope by:
+    - creates a new child scope,
+    - sets initial state,
+    - adds behaviour to the $scope.
+    -->
+    <div ng-app="myApp" ng-controller="bowlingScorerController">
       Roll 1: <input type="text" ng-model="roll1"><br>
       Roll 2: <input type="text" ng-model="roll2"><br>
       <br>
       Score: {{ get_score() }}
       <script>
         var app = angular.module('myApp', []);
-        app.controller('myCtrl', function($scope) {
+        app.controller('bowlingScorerController', function($scope) {
             $scope.roll1 = 0;
             $scope.roll2 = 0;
             $scope.get_score = function() {
