@@ -16,7 +16,7 @@
     - sets initial state,
     - adds behaviour to the $scope.
     -->
-    <div ng-app="myApp" ng-controller="bowlingScorerController">
+    <div ng-app="myApp" ng-controller="BowlingScorerController">
       <!--
       This binds the input field in the UI to the $scope.roll1 property.
       Angular then adds a watch function to the $watch list.
@@ -31,7 +31,7 @@
       Score: {{ get_score() }}
       <script>
         var app = angular.module('myApp', []);
-        app.controller('bowlingScorerController', function($scope) {
+        app.controller('BowlingScorerController', function($scope) {
             $scope.rolls = [0, 0];
             $scope.get_score = function() {
                 return parseInt($scope.rolls[0]) + parseInt($scope.rolls[1]);
