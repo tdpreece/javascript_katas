@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('BowlingScorerApp', []);
 app.controller('BowlingScorerController', function() {
     this.rolls = [0, 0];
     this.get_score = function() {
