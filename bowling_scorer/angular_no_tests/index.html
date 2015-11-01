@@ -2,21 +2,21 @@
 <html lang="en-US">
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <body>
-    <p>TODO: look at events and updating the score.</p>
     <div ng-app="myApp" ng-controller="myCtrl">
       Roll 1: <input type="text" ng-model="roll1"><br>
       Roll 2: <input type="text" ng-model="roll2"><br>
       <br>
-      Score: {{ score }}
+      Score: {{ get_score() }}
+      <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.roll1 = 0;
+            $scope.roll2 = 0;
+            $scope.get_score = function() {
+              return parseInt($scope.roll1) + parseInt($scope.roll2);
+            }
+        });
+      </script>
     </div>
-
-    <script>
-      var app = angular.module('myApp', []);
-      app.controller('myCtrl', function($scope) {
-          $scope.roll1 = 1;
-          $scope.roll2 = 3;
-          $scope.score = $scope.roll1 + $scope.roll2;
-      });
-    </script>
   </body>
 </html>
