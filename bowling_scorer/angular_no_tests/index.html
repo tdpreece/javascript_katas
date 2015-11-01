@@ -17,6 +17,14 @@
     - adds behaviour to the $scope.
     -->
     <div ng-app="myApp" ng-controller="bowlingScorerController">
+      <!--
+      This binds the input field in the UI to the $scope.roll1 property.
+      Angular then adds a watch function to the $watch list.
+      A browser event triggers Angular's $digest loop: Angular app walks down
+      the $watch list and records the new value if it has changed.  As a change
+      in one value could cause a change to another, Angular re-runs through the
+      $watch list until no values have changed.
+      -->
       Roll 1: <input type="text" ng-model="roll1"><br>
       Roll 2: <input type="text" ng-model="roll2"><br>
       <br>
