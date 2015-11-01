@@ -15,26 +15,31 @@
     - creates a new child scope,
     - sets initial state,
     - adds behaviour to the $scope.
+
+    * controllerAs
+    Use this so to help to avoid problems with scope when you have nested
+    controllers.
+    See, http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
     -->
-    <div ng-app="myApp" ng-controller="BowlingScorerController">
+    <div ng-app="myApp" ng-controller="BowlingScorerController as bowling_scorer">
       <!--
-      This binds the input field in the UI to the $scope.roll1 property.
+      This binds the input field in the UI to the rolls property in $scope.
       Angular then adds a watch function to the $watch list.
       A browser event triggers Angular's $digest loop: Angular app walks down
       the $watch list and records the new value if it has changed.  As a change
       in one value could cause a change to another, Angular re-runs through the
       $watch list until no values have changed.
       -->
-      Roll 1: <input type="text" ng-model="rolls[0]"><br>
-      Roll 2: <input type="text" ng-model="rolls[1]"><br>
+      Roll 1: <input type="text" ng-model="bowling_scorer.rolls[0]"><br>
+      Roll 2: <input type="text" ng-model="bowling_scorer.rolls[1]"><br>
       <br>
-      Score: {{ get_score() }}
+      Score: {{ bowling_scorer.get_score() }}
       <script>
         var app = angular.module('myApp', []);
-        app.controller('BowlingScorerController', function($scope) {
-            $scope.rolls = [0, 0];
-            $scope.get_score = function() {
-                return parseInt($scope.rolls[0]) + parseInt($scope.rolls[1]);
+        app.controller('BowlingScorerController', function() {
+            this.rolls = [0, 0];
+            this.get_score = function() {
+                return parseInt(this.rolls[0]) + parseInt(this.rolls[1]);
             }
         });
       </script>
