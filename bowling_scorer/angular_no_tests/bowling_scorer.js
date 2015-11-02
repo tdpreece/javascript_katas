@@ -8,6 +8,9 @@ app.controller('BowlingScorerController', function() {
     }
 
     function get_roll_score(roll_value) {
-        return parseInt(roll_value)
+        if (roll_value === 'X') {
+            return 10;
+        }
+        return parseInt(roll_value);
     }
 });
