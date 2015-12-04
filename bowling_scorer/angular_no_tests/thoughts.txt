@@ -4,3 +4,4 @@
 ********************
 - Manual 'point and click' tesing while refactoring was time consuming.
 - Not confident that my point and click testing was thorough enough.
+- Temptation to not conduct manual tests after each change and take bigger steps between testing.
