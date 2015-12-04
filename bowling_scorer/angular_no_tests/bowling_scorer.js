@@ -55,7 +55,7 @@ app.controller('BowlingScorerController', function() {
         score = 0;
         score = frame.get_number_of_pins_knocked_down();
         if (frame.isSpare()) {
-            score += get_number_of_pins_knocked_down_in_roll(frames[index+1].roll1);
+            score += get_spare_bonus(frames[index+1].roll1);
         }
         if (frame.isStrike()) {
             score += frames[index+1].get_number_of_pins_knocked_down();
@@ -63,7 +63,7 @@ app.controller('BowlingScorerController', function() {
         return score;
     }
 
-    function get_number_of_pins_knocked_down_in_roll(roll) {
+    function get_spare_bonus(roll) {
         if (roll === 'X') {
             return 10;
         }
