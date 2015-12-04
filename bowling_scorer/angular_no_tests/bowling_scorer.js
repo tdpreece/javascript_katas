@@ -31,7 +31,9 @@ app.controller('BowlingScorerController', function() {
     }
 
     function get_frame_score(frame, index, frames) {
-        return get_number_of_pins_knocked_down(frame);
+        score = 0;
+        score = get_number_of_pins_knocked_down(frame);
+        return score;
     }
 
     function get_number_of_pins_knocked_down(frame) {
