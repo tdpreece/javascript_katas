@@ -36,6 +36,9 @@ app.controller('BowlingScorerController', function() {
         if (frame.roll2 === '/') {
             score += get_number_of_pins_knocked_down_in_roll(frames[index+1].roll1);
         }
+        if (frame.roll1 === 'X') {
+            score += get_number_of_pins_knocked_down(frames[index+1]);
+        }
         return score;
     }
 
