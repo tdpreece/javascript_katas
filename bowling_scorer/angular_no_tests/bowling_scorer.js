@@ -33,6 +33,9 @@ app.controller('BowlingScorerController', function() {
     function get_frame_score(frame, index, frames) {
         score = 0;
         score = get_number_of_pins_knocked_down(frame);
+        if (frame.roll2 === '/') {
+            score += get_number_of_pins_knocked_down_in_roll(frames[index+1].roll1);
+        }
         return score;
     }
 
@@ -44,6 +47,13 @@ app.controller('BowlingScorerController', function() {
             return 10;
         }
         return parseInt(frame.roll1) + parseInt(frame.roll2);
+    }
+
+    function get_number_of_pins_knocked_down_in_roll(roll) {
+        if (roll === 'X') {
+            return 10;
+        }
+        return parseInt(roll);
     }
 
     this.game = Game();
