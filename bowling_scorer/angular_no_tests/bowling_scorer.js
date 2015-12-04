@@ -9,6 +9,12 @@ app.controller('BowlingScorerController', function() {
                     return true;
                 }
                 return false;
+            },
+            isSpare: function() {
+                if (this.roll2 == '/') {
+                    return true;
+                }
+                return false;
             }
         }
     }
@@ -39,7 +45,7 @@ app.controller('BowlingScorerController', function() {
     function get_frame_score(frame, index, frames) {
         score = 0;
         score = get_number_of_pins_knocked_down(frame);
-        if (frame.roll2 === '/') {
+        if (frame.isSpare()) {
             score += get_number_of_pins_knocked_down_in_roll(frames[index+1].roll1);
         }
         if (frame.isStrike()) {
@@ -52,7 +58,7 @@ app.controller('BowlingScorerController', function() {
         if (frame.isStrike()) {
             return 10;
         }
-        if (frame.roll2 === '/') {
+        if (frame.isSpare()) {
             return 10;
         }
         return parseInt(frame.roll1) + parseInt(frame.roll2);
