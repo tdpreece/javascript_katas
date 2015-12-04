@@ -16,6 +16,12 @@ app.controller('BowlingScorerController', function() {
                 }
                 return false;
             },
+            get_spare_bonus: function() {
+                if (this.roll1 === 'X') {
+                    return 10;
+                }
+                return parseInt(this.roll1);
+            },
             get_number_of_pins_knocked_down: function() {
                 if (this.isStrike()) {
                     return 10;
@@ -55,19 +61,12 @@ app.controller('BowlingScorerController', function() {
         score = 0;
         score = frame.get_number_of_pins_knocked_down();
         if (frame.isSpare()) {
-            score += get_spare_bonus(frames[index+1].roll1);
+            score += frames[index+1].get_spare_bonus();
         }
         if (frame.isStrike()) {
             score += frames[index+1].get_number_of_pins_knocked_down();
         }
         return score;
-    }
-
-    function get_spare_bonus(roll) {
-        if (roll === 'X') {
-            return 10;
-        }
-        return parseInt(roll);
     }
 
     this.game = Game();
