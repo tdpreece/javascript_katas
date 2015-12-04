@@ -17,7 +17,7 @@ app.controller('BowlingScorerController', function() {
                 return false;
             },
             get_pins_knocked_down_in_roll1: function() {
-                if (this.roll1 === 'X') {
+                if (this.isStrike()) {
                     return 10;
                 }
                 return parseInt(this.roll1);
