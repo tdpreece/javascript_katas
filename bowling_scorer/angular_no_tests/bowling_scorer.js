@@ -21,8 +21,8 @@ app.controller('BowlingScorerController', function() {
             getScore: function() {
                 var sum = 0;
                 this.frames.forEach(
-                    function(frame) {
-                        sum += get_frame_score(frame);
+                    function(frame, index, frames) {
+                        sum += get_frame_score(frame, index, frames);
                     }   
                 );
                 return sum;
@@ -30,7 +30,11 @@ app.controller('BowlingScorerController', function() {
         }
     }
 
-    function get_frame_score(frame) {
+    function get_frame_score(frame, index, frames) {
+        return get_number_of_pins_knocked_down(frame);
+    }
+
+    function get_number_of_pins_knocked_down(frame) {
         if (frame.roll1 === 'X') {
             return 10;
         }
