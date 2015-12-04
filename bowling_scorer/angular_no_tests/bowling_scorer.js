@@ -23,7 +23,7 @@ app.controller('BowlingScorerController', function() {
                 this.frames.forEach(
                     function(frame, index, frames) {
                         sum += get_frame_score(frame, index, frames);
-                    }   
+                    }
                 );
                 return sum;
             }
