@@ -1,0 +1,6 @@
+
+********************
+* On not using TDD
+********************
+- Manual 'point and click' tesing while refactoring was time consuming.
+- Not confident that my point and click testing was thorough enough.
