@@ -22,8 +22,7 @@ app.controller('BowlingScorerController', function() {
                 var sum = 0;
                 this.frames.forEach(
                     function(frame) {
-                        sum += get_roll_score(frame.roll1);
-                        sum += get_roll_score(frame.roll2);
+                        sum += get_frame_score(frame.roll1, frame.roll2);
                     }   
                 );
                 return sum;
@@ -31,11 +30,14 @@ app.controller('BowlingScorerController', function() {
         }
     }
 
-    function get_roll_score(roll_value) {
-        if (roll_value === 'X') {
+    function get_frame_score(roll1, roll2) {
+        if (roll1 === 'X') {
             return 10;
         }
-        return parseInt(roll_value);
+        if (roll2 === '/') {
+            return 10;
+        }
+        return parseInt(roll1) + parseInt(roll2);
     }
 
     this.game = Game();
