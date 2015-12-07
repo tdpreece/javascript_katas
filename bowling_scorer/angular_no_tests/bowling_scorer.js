@@ -26,6 +26,9 @@ app.controller('BowlingScorerController', function() {
                 if (this.isStrike()) {
                     return 10;
                 }
+                if (this.isSpare()) {
+                    return 10 - this.roll1;
+                }
                 return parseInt(this.roll2);
             },
             get_number_of_pins_knocked_down: function() {
