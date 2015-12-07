@@ -68,30 +68,30 @@ app.controller('BowlingScorerController', function() {
             getScore: function() {
                 var sum = 0;
                 for (var i=0; i<this.frames.length; i++) {
-                    sum += get_frame_score(this.frames[i], i, this.frames);
+                    sum += this.get_frame_score(this.frames[i], i, this.frames);
                 }
                 return sum;
+            },
+            get_frame_score: function(frame, index, frames) {
+                score = 0;
+                score = frame.get_number_of_pins_knocked_down();
+                if (frame.isSpare()) {
+                    score += frames[index+1].get_pins_knocked_down_in_roll1();
+                }
+                if (frame.isStrike()) {
+                    if (frames[index+1].isStrike())
+                    {
+                        score += frames[index+1].get_pins_knocked_down_in_roll1();
+                        score += frames[index+2].get_pins_knocked_down_in_roll1();
+                    } else {
+                        score += frames[index+1].get_number_of_pins_knocked_down();
+                    }
+                }
+                return score;
             }
         }
     }
 
-    function get_frame_score(frame, index, frames) {
-        score = 0;
-        score = frame.get_number_of_pins_knocked_down();
-        if (frame.isSpare()) {
-            score += frames[index+1].get_pins_knocked_down_in_roll1();
-        }
-        if (frame.isStrike()) {
-            if (frames[index+1].isStrike())
-            {
-                score += frames[index+1].get_pins_knocked_down_in_roll1();
-                score += frames[index+2].get_pins_knocked_down_in_roll1();
-            } else {
-                score += frames[index+1].get_number_of_pins_knocked_down();
-            }
-        }
-        return score;
-    }
 
     this.game = Game();
 });
