@@ -67,11 +67,9 @@ app.controller('BowlingScorerController', function() {
             bonusRoll2: BonusRoll(),
             getScore: function() {
                 var sum = 0;
-                this.frames.forEach(
-                    function(frame, index, frames) {
-                        sum += get_frame_score(frame, index, frames);
-                    }
-                );
+                for (var i=0; i<this.frames.length; i++) {
+                    sum += get_frame_score(this.frames[i], i, this.frames);
+                }
                 return sum;
             }
         }
