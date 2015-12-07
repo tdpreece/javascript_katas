@@ -80,19 +80,7 @@ app.controller('BowlingScorerController', function() {
                     score += this.getPinsKnockedDownInNextRoll(index)
                 }
                 if (frame.isStrike()) {
-                    if (index === 9) {
-                        score += this.bonusRoll1.get_pins_knocked_down();
-                        score += this.bonusRoll2.get_pins_knocked_down();
-                    } else if (this.frames[index+1].isStrike()) {
-                        score += this.frames[index+1].get_pins_knocked_down_in_roll1();
-                        if (index === 8) {
-                            score += this.bonusRoll1.get_pins_knocked_down();
-                        } else {
-                            score += this.frames[index+2].get_pins_knocked_down_in_roll1();
-                        }
-                    } else {
-                        score += this.frames[index+1].get_number_of_pins_knocked_down();
-                    }
+                    score += this.getPinsKnockedDownInNextTwoRolls(index);
                 }
                 return score;
             },
@@ -102,6 +90,23 @@ app.controller('BowlingScorerController', function() {
                     pinsKnockedDown  += this.bonusRoll1.get_pins_knocked_down();
                 } else {
                     pinsKnockedDown  += this.frames[frameIndex+1].get_pins_knocked_down_in_roll1();
+                }
+                return pinsKnockedDown;
+            },
+            getPinsKnockedDownInNextTwoRolls(frameIndex) {
+                pinsKnockedDown = 0;
+                if (frameIndex === 9) {
+                    pinsKnockedDown += this.bonusRoll1.get_pins_knocked_down();
+                    pinsKnockedDown += this.bonusRoll2.get_pins_knocked_down();
+                } else if (this.frames[frameIndex+1].isStrike()) {
+                    pinsKnockedDown += this.frames[frameIndex+1].get_pins_knocked_down_in_roll1();
+                    if (frameIndex === 8) {
+                        pinsKnockedDown += this.bonusRoll1.get_pins_knocked_down();
+                    } else {
+                        pinsKnockedDown += this.frames[frameIndex+2].get_pins_knocked_down_in_roll1();
+                    }
+                } else {
+                    pinsKnockedDown += this.frames[frameIndex+1].get_number_of_pins_knocked_down();
                 }
                 return pinsKnockedDown;
             }
