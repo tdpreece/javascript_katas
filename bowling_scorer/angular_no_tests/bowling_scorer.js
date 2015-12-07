@@ -61,17 +61,17 @@ app.controller('BowlingScorerController', function() {
         }
     }
 
-    function initialFrames() {
-        var frames = [];
-        for (var i=0; i < 10; i +=1) {
-            frames[i] = Frame();
-        }
-        return frames;
-    }
-
     function Game() {
+        var numberOfFrames = 10;
+        function initialFrames(numberOfFrames) {
+            var frames = [];
+            for (var i=0; i < numberOfFrames; i +=1) {
+                frames[i] = Frame();
+            }
+            return frames;
+        }
         return {
-            frames: initialFrames(),
+            frames: initialFrames(numberOfFrames),
             bonusRoll1: BonusRoll(),
             bonusRoll2: BonusRoll(),
             getScore: function() {
@@ -123,13 +123,13 @@ app.controller('BowlingScorerController', function() {
                 return pinsKnockedDown;
             },
             isFinalFrame(frameIndex) {
-                if (frameIndex === 9) {
+                if (frameIndex === numberOfFrames - 1) {
                     return true;
                 }
                 return false;
             },
             isPenultimareFrame(frameIndex) {
-                if (frameIndex === 8) {
+                if (frameIndex === numberOfFrames - 2) {
                     return true;
                 }
                 return false;
