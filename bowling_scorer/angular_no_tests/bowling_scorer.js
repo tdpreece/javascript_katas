@@ -84,7 +84,13 @@ app.controller('BowlingScorerController', function() {
             score += frames[index+1].get_pins_knocked_down_in_roll1();
         }
         if (frame.isStrike()) {
-            score += frames[index+1].get_number_of_pins_knocked_down();
+            if (frames[index+1].isStrike())
+            {
+                score += frames[index+1].get_pins_knocked_down_in_roll1();
+                score += frames[index+2].get_pins_knocked_down_in_roll1();
+            } else {
+                score += frames[index+1].get_number_of_pins_knocked_down();
+            }
         }
         return score;
     }
