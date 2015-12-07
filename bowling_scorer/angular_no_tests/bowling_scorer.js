@@ -34,6 +34,24 @@ app.controller('BowlingScorerController', function() {
         }
     }
 
+    function BonusRoll() {
+        return {
+            value: '0',
+            isStrike: function() {
+                if (this.value == 'X'){
+                    return true;
+                }
+                return false;
+            },
+            get_pins_knocked_down: function() {
+                if (this.isStrike()) {
+                    return 10;
+                }
+                return parseInt(this.value);
+            }
+        }
+    }
+
     function initialFrames() {
         var frames = [];
         for (var i=0; i < 10; i +=1) {
@@ -45,6 +63,8 @@ app.controller('BowlingScorerController', function() {
     function Game() {
         return {
             frames: initialFrames(),
+            bonusRoll1: BonusRoll(),
+            bonusRoll2: BonusRoll(),
             getScore: function() {
                 var sum = 0;
                 this.frames.forEach(
