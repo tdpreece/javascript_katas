@@ -22,7 +22,7 @@ app.controller('BowlingScorerController', function() {
                 }
                 return parseInt(this.roll1);
             },
-            get_pins_knocked_down_in_roll2: function() {
+            getPinsKnockedDownInRoll2: function() {
                 if (this.isStrike()) {
                     return 10;
                 }
@@ -112,7 +112,7 @@ app.controller('BowlingScorerController', function() {
                         pinsKnockedDown = this.frames[frameIndex+2].getPinsKnockedDownInRoll1();
                     }
                 } else {
-                    pinsKnockedDown = this.frames[frameIndex+1].get_pins_knocked_down_in_roll2();
+                    pinsKnockedDown = this.frames[frameIndex+1].getPinsKnockedDownInRoll2();
                 }
                 return pinsKnockedDown;
 
