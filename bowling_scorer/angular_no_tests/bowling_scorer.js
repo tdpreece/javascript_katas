@@ -68,23 +68,24 @@ app.controller('BowlingScorerController', function() {
             getScore: function() {
                 var sum = 0;
                 for (var i=0; i<this.frames.length; i++) {
-                    sum += this.get_frame_score(this.frames[i], i, this.frames);
+                    sum += this.get_frame_score(i);
                 }
                 return sum;
             },
-            get_frame_score: function(frame, index, frames) {
+            get_frame_score: function(index) {
                 score = 0;
+                frame = this.frames[index];
                 score = frame.get_number_of_pins_knocked_down();
                 if (frame.isSpare()) {
-                    score += frames[index+1].get_pins_knocked_down_in_roll1();
+                    score += this.frames[index+1].get_pins_knocked_down_in_roll1();
                 }
                 if (frame.isStrike()) {
-                    if (frames[index+1].isStrike())
+                    if (this.frames[index+1].isStrike())
                     {
-                        score += frames[index+1].get_pins_knocked_down_in_roll1();
-                        score += frames[index+2].get_pins_knocked_down_in_roll1();
+                        score += this.frames[index+1].get_pins_knocked_down_in_roll1();
+                        score += this.frames[index+2].get_pins_knocked_down_in_roll1();
                     } else {
-                        score += frames[index+1].get_number_of_pins_knocked_down();
+                        score += this.frames[index+1].get_number_of_pins_knocked_down();
                     }
                 }
                 return score;
