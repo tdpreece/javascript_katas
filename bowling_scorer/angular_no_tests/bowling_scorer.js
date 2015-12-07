@@ -90,7 +90,7 @@ app.controller('BowlingScorerController', function() {
                     } else if (this.frames[index+1].isStrike()) {
                         score += this.frames[index+1].get_pins_knocked_down_in_roll1();
                         if (index === 8) {
-                            score += this.bonusRoll2.get_pins_knocked_down();
+                            score += this.bonusRoll1.get_pins_knocked_down();
                         } else {
                             score += this.frames[index+2].get_pins_knocked_down_in_roll1();
                         }
