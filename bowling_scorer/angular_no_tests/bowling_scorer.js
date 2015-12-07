@@ -77,11 +77,11 @@ app.controller('BowlingScorerController', function() {
             getScore: function() {
                 var sum = 0;
                 for (var i=0; i<this.frames.length; i++) {
-                    sum += this.get_frame_score(i);
+                    sum += this.getFrameScore(i);
                 }
                 return sum;
             },
-            get_frame_score: function(index) {
+            getFrameScore: function(index) {
                 score = 0;
                 frame = this.frames[index];
                 score = frame.get_number_of_pins_knocked_down();
