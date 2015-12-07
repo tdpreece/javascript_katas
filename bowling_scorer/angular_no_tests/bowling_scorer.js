@@ -95,7 +95,7 @@ app.controller('BowlingScorerController', function() {
             },
             getPinsKnockedDownInNextRoll(frameIndex) {
                 pinsKnockedDown = 0;
-                if (frameIndex === 9) {
+                if (this.isFinalFrame(frameIndex)) {
                     pinsKnockedDown  += this.bonusRoll1.get_pins_knocked_down();
                 } else {
                     pinsKnockedDown  += this.frames[frameIndex+1].get_pins_knocked_down_in_roll1();
@@ -103,7 +103,7 @@ app.controller('BowlingScorerController', function() {
                 return pinsKnockedDown;
             },
             getPinsKnockedDownInRollAfterNext(frameIndex) {
-                if (frameIndex === 9) {
+                if (this.isFinalFrame(frameIndex)) {
                     pinsKnockedDown = this.bonusRoll2.get_pins_knocked_down();
                 } else if (this.frames[frameIndex+1].isStrike()) {
                     if (frameIndex === 8) {
@@ -121,6 +121,12 @@ app.controller('BowlingScorerController', function() {
                 pinsKnockedDown = this.getPinsKnockedDownInNextRoll(frameIndex);
                 pinsKnockedDown += this.getPinsKnockedDownInRollAfterNext(frameIndex);
                 return pinsKnockedDown;
+            },
+            isFinalFrame(frameIndex) {
+                if (frameIndex === 9) {
+                    return true;
+                }
+                return false;
             }
         }
     }
