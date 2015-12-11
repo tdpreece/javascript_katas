@@ -1,4 +1,9 @@
 var app = angular.module('BowlingScorerApp', []);
+app.directive('bowlingScoreCard', function() {
+    return {
+        templateUrl: 'bowling_score_sheet.html'
+    };
+});
 app.controller('BowlingScorerController', function() {
     function Frame() {
         return {
