@@ -142,6 +142,18 @@ app.directive('bowlingScoreCard', function() {
         this.game = Game();
     };
     return {
+    /**
+     * * ng-controller
+     * Initialises scope by:
+     * - creates a new child scope,
+     * - sets initial state,
+     * - adds behaviour to the $scope.
+     *
+     * * controllerAs
+     * Use this so to help to avoid problems with scope when you have nested
+     * controllers.
+     * See, http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
+     */
         controller: controller,
         controllerAs: 'bowling_scorer',
         bindToController: true,
