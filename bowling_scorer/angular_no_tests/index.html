@@ -25,14 +25,6 @@
     See, http://blog.thoughtram.io/angularjs/2015/01/02/exploring-angular-1.3-bindToController.html
     -->
     <div ng-app="BowlingScorerApp">
-      <!--
-      This binds the input field in the UI to the rolls property in $scope.
-      Angular then adds a watch function to the $watch list.
-      A browser event triggers Angular's $digest loop: Angular app walks down
-      the $watch list and records the new value if it has changed.  As a change
-      in one value could cause a change to another, Angular re-runs through the
-      $watch list until no values have changed.
-      -->
       <div bowling-score-card></div>
     </div>
   </body>
