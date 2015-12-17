@@ -160,3 +160,8 @@ app.directive('bowlingScoreCard', function() {
         templateUrl: 'bowling_score_sheet.html'
     };
 });
+app.directive('bowlingFrame', function() {
+    return {
+        template: '<p>A Frame</p>'
+    };
+});
