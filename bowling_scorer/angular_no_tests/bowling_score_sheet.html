@@ -1,7 +1,6 @@
 <div ng-repeat="f in bowling_scorer.game.frames track by $index">
   <label>Frame {{ $index }}</label>
-  <input type="text" ng-model="f.roll1">
-  <input type="text" ng-model="f.roll2">
+  <div bowling-frame aframe="f"></div>
 </div>
 <div>
   <label>Bonus Roll 1<label>
@@ -11,5 +10,4 @@
   <label>Bonus Roll 2<label>
   <input type="text" ng-model="bowling_scorer.game.bonusRoll2.value">
 </div>
-<div bowling-frame></div>
 Score: {{ bowling_scorer.game.getScore() }}

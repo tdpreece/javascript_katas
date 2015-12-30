@@ -162,6 +162,9 @@ app.directive('bowlingScoreCard', function() {
 });
 app.directive('bowlingFrame', function() {
     return {
-        template: '<p>A Frame</p>'
+        scope: {
+            aframe: '='
+        },
+        template: '<input type="text" ng-model="aframe.roll1"><input type="text" ng-model="aframe.roll2">'
     };
 });
