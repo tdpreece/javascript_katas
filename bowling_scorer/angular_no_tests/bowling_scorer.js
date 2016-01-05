@@ -3,7 +3,14 @@ app.directive('bowlingScoreCard', function() {
     controller = function() {
         function Frame() {
             return {
-                roll1: '0',
+                _roll1: '0',
+                get roll1() {return this._roll1;},
+                set roll1(value) {
+                    this._roll1 = value;
+                    if (this.isStrike()) {
+                        this.roll2 = '0';
+                    }
+                },
                 roll2: '0',
                 isStrike: function() {
                     if (this.roll1 == 'X'){
