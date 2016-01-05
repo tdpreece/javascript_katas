@@ -165,6 +165,6 @@ app.directive('bowlingFrame', function() {
         scope: {
             aframe: '='
         },
-        template: '<input type="text" ng-model="aframe.roll1"><input type="text" ng-model="aframe.roll2">'
+        template: '<input type="text" ng-model="aframe.roll1"><input type="text" ng-model="aframe.roll2" ng-disabled="aframe.isStrike()">'
     };
 });
