@@ -12,7 +12,6 @@
 ********************
 * Next Steps
 ********************
-- Only allow users to edit inputs that they are allowed to.
-  e.g. can't enter anything in the second roll if you get a strike in the first.
-- Looking into nesting of directives (may want a frame directive ...)
-- Add a leader board that inspects several score card directives. 
+- Add logic to enable/disable second bonus roll
+- Add several score cards and a leader board
+- introduce modules
