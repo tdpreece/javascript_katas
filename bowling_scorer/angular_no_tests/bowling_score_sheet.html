@@ -4,7 +4,7 @@
 </div>
 <div>
   <label>Bonus Roll 1<label>
-  <input type="text" ng-model="bowling_scorer.game.bonusRoll1.value">
+  <input type="text" ng-model="bowling_scorer.game.bonusRoll1.value"  ng-disabled="!bowling_scorer.game.first_bonus_roll_is_available()">
 </div>
 <div>
   <label>Bonus Roll 2<label>

@@ -141,6 +141,11 @@ app.directive('bowlingScoreCard', function() {
                         return true;
                     }
                     return false;
+                },
+                first_bonus_roll_is_available() {
+                    return this.frames[numberOfFrames - 1].isStrike() ||
+                        this.frames[numberOfFrames - 2].isStrike() ||
+                        this.frames[numberOfFrames - 1].isSpare();
                 }
             }
         }
