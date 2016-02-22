@@ -1,0 +1,15 @@
+{
+  "name": "bowling_scorer_backbone",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test_command"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "mocha": "^2.4.5",
+    "chai": "^3.4.1"
+  }
+}
